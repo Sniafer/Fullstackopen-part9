@@ -42,11 +42,21 @@ interface Training {
 
 app.post("/exercises", (req, res) => {
   const { days, target } = req.body as Training;
-  console.log(req.body);
+
+  if (!days || !target) return res.status(400).json("Not enough arguments");
+  let notNumber = false;
+  days.forEach((d: number) => {
+    if (isNaN(d)) {
+      notNumber = true;
+    }
+  });
+  if (notNumber || isNaN(target))
+    return res.status(400).json("Provided values were not numbers!");
+
   const result = calculateExercises(days, target);
   try {
-    res.status(200).json(result);
-  } catch (error) {
+    return res.status(200).json(result);
+  } catch (error: unknown) {
     throw new Error(`Message: ${error}`);
   }
 });
