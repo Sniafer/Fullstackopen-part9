@@ -10,6 +10,12 @@ const getEntries = (): PatientsEntry[] => {
   return patients;
 };
 
+const getSinglePatient = (id: string): PatientsEntry | unknown => {
+  const patient = patients.filter((p) => p.id === id);
+  if (patient) return patient;
+  return null;
+};
+
 const getNonSensitiveEntries = (): NonSensitivePatientEntry[] => {
   return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
     id,
@@ -42,4 +48,9 @@ const addEntries = (entry: NewPatientEntry): PatientsEntry => {
   return newEntry;
 };
 
-export default { getEntries, getNonSensitiveEntries, addEntries };
+export default {
+  getEntries,
+  getNonSensitiveEntries,
+  addEntries,
+  getSinglePatient,
+};

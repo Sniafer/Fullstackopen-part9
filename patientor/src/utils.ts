@@ -42,6 +42,7 @@ type Fields = {
   ssn: unknown;
   gender: unknown;
   occupation: unknown;
+  entries: unknown;
 };
 
 const toNewPatientsEntry = ({
@@ -57,6 +58,7 @@ const toNewPatientsEntry = ({
     ssn: parseText(ssn),
     gender: parseGender(gender),
     occupation: parseText(occupation),
+    entries: [],
   };
 
   return newEntry;
