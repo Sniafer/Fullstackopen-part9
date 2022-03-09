@@ -10,7 +10,7 @@ export enum Gender {
   Other = "other",
 }
 
-interface BaseEntry {
+export interface BaseEntry {
   id: string;
   description: string;
   date: string;
@@ -61,6 +61,15 @@ export interface PatientsEntry {
   occupation: string;
   entries: Entry[];
 }
+
+// Define special omit for unions
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown
+  ? Omit<T, K>
+  : never;
+// Define Entry without the 'id' property
+export type NewEntry = UnionOmit<Entry, "id">;
+
+export type NewBaseEntry = Omit<BaseEntry, "id">;
 
 export type NewPatientEntry = Omit<PatientsEntry, "id">;
 

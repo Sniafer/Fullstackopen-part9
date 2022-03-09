@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/patients
+POST http://localhost:3001/api/patients123
 content-type: application/json
 
 {
@@ -7,4 +7,23 @@ content-type: application/json
     "ssn": "numerek",
     "gender": "male",
     "occupation": "pachol"
+}
+
+###
+POST http://localhost:3001/api/patients/d2773336-f723-11e9-8f0b-362b9e155667
+content-type: application/json
+
+{
+    "date": "2022-02-01",
+    "type": "OccupationalHealthcare",
+    "description": "Patient is very sick",
+    "specialist": "MD House",
+    "healthCheckRating": "3",
+    "employerName": "Twoja Stara",
+     "sickLeave": {
+        "startDate": "20.03.1990",
+        "endDate": "30.03.1992",
+          }
+
+
 }
